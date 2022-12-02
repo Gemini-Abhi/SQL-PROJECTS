@@ -1,0 +1,23 @@
+ Calculate the Average Severity by vehicle type.
+ANS: select 
+      vt.label as 'Vehicle_type',
+      count(vt.[label]) as 'Number of Accidents',
+      AVG(a.Accident_Severity)  as 'Average_severity'
+    from Vehicles_2015 v
+      join Accidents_2015 a on v.Accident_Index=a.Accident_Index
+      join [dbo].[vehicle_types] as vt on vt.code = v.Vehicle_Type
+    group by vehicle_type,label order by Vehicle_Type;
+ 
+Calculate the Average Severity and Total Accidents by Motorcycle.
+ANS:  select 
+        ve.label,
+        v.Vehicle_Type,
+        COUNT(v.Accident_Index) as Total_accidents,
+        AVG(a.Accident_Severity)  as 'Average_severity'
+
+      from Accidents_2015 as a
+        join Vehicles_2015 as v on a.Accident_Index = v.Accident_Index
+        join vehicle_types as ve on ve.code = v.vehicle_type
+      where Vehicle_Type in (2,3,4,5,23,97)
+        group by(ve.label),Vehicle_Type
+        order by Total_accidents desc
