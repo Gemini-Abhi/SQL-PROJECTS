@@ -21,3 +21,11 @@ ANS:  select
       where Vehicle_Type in (2,3,4,5,23,97)
         group by(ve.label),Vehicle_Type
         order by Total_accidents desc
+Show the highest number of accidents due to which vehicle?
+ANS: select 
+       ve.label,
+       COUNT(a.Accident_Index) AS Number_of_accidents
+      from Accidents_2015 as a
+       join Vehicles_2015 as v on a.Accident_Index = v.Accident_Index
+       join vehicle_types as ve on ve.code = v.vehicle_type
+      GROUP BY label order by Number_of_accidents desc
