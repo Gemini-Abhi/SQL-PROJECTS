@@ -1,0 +1,12 @@
+ --1.Which country has the highest population?
+ select country from world where population = (select MAX(population) from  world) 
+ --2. Which country has the least number of people? 
+ select country from world where population = (select Min(population) from  world) 
+ --3. Which country is witnessing the highest population growth? 
+ select country from world where population_growth_rate= (select max(population_growth_rate)  from  world)
+ --4. Which country has an extraordinary number for the population?
+
+ --5. Which is the most densely populated country in the world?
+ Select country,(population/area) as Population_density 
+ from world where (population/area) = (select max(population/area)  from  world where area is not null and area!=0) and area is not null and area!=0
+ 
