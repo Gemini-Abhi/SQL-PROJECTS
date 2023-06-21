@@ -4,7 +4,7 @@ select * from IPL_Matches_2008_2022
 alter table IPL_Matches_2008_2022
 drop column method
 
-
+--Data Cleaning
 update IPL_Matches_2008_2022 
 set Team2 = 'Royal Challengers Bangalore'
 where Team2= 'Royal Challengers Bengaluru'
@@ -12,20 +12,20 @@ where Team2= 'Royal Challengers Bengaluru'
 update IPL_Matches_2008_2022 
 set WinningTeam = 'Rising Pune Supergiant'
 where WinningTeam= 'Rising Pune Supergiants'
-
+--Analysis
 --Number of IPL teams each year
 select Season, count(season) as Number_of_Teams 
 from
     (select team1 ,season from [IPL_Matches_2008_2022] union select Team2 ,season from [IPL_Matches_2008_2022] ) s
 group by Season order by Season 
 
---How many matches are won by each team through out 2008-2022?
+--How many matches are won by each team through out 2008–2022?
 select WinningTeam, COUNT(winningteam) as No_of_matches 
 from [dbo].[IPL_Matches_2008_2022]  group by WinningTeam order by No_of_matches desc
 
 
 
---Create a  stored procedure for   Points table for IPL matches?
+--Create a  stored procedure for the points table for IPL matches?
 create procedure Points_table @year varchar(50)
 as
 with Points as 
@@ -105,9 +105,11 @@ round(cast(((defend*1.0/(chase+defend))*100) as float),2) as Percentage_Defend
 from cd
 
 --Percentage Win in Superover
-select * from superover
---create view superover as select * from [dbo].[IPL_Matches_2008_2022]  where SuperOver = 1
 
+create view superover as select * from [dbo].[IPL_Matches_2008_2022]  where SuperOver = 1
+	
+select * from superover
+	
 with cte1 as(
 			select team_name , COUNT(*)  as Total from 
 			(
@@ -178,10 +180,5 @@ from IPL_Matches_2008_2022 group by Season, player_of_match order by Season desc
 select player_of_match , count(player_of_match ) as Numner_of_wins
 from IPL_Matches_2008_2022 group by player_of_match order by Numner_of_wins desc
 
-
-
---Who is the most consistent batsman and bowler in each team and also in the entire league?
---Predict the winning team with the consistency of wins and ball deliveries?
---Who is the most valuable player of every season?
 
 select * from IPL_Matches_2008_2022
