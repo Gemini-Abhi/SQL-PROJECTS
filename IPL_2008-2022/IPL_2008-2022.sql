@@ -4,7 +4,7 @@ select * from IPL_Matches_2008_2022
 alter table IPL_Matches_2008_2022
 drop column method
 
-
+--Data Cleaning
 update IPL_Matches_2008_2022 
 set Team2 = 'Royal Challengers Bangalore'
 where Team2= 'Royal Challengers Bengaluru'
@@ -12,7 +12,8 @@ where Team2= 'Royal Challengers Bengaluru'
 update IPL_Matches_2008_2022 
 set WinningTeam = 'Rising Pune Supergiant'
 where WinningTeam= 'Rising Pune Supergiants'
-
+	
+--**********************Analysis of the Data***************************
 --Number of IPL teams each year
 select Season, count(season) as Number_of_Teams 
 from
