@@ -3,9 +3,10 @@ The IPL (Indian Premier League) is a professional Twenty20 cricket league played
 The league features teams representing different cities in India, and it follows a franchise-based model similar to other professional sports leagues
 
 Keep in mind that this summary is based on historical information up until September 2022, and there might have been changes in recent seasons.
-# A few factors related to each team's performance are taken into consideration when doing the study. Because there are now fewer or more competing teams, the data analysis is based on the Kaagle dataset until 2022.
 
-  After doing thorough research, a couple of research questions are considered for insights.
+A few factors related to each team's performance are taken into consideration when doing the study. Because there are now fewer or more competing teams, the data analysis is based on the Kaagle dataset until 2022.
+
+ # After doing thorough research, a couple of research questions are considered for insights.
   
   How many IPL teams have partaken each year ?
   
